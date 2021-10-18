@@ -1,0 +1,49 @@
+@import "./variables/variables.scss";
+
+.article-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    background-color: white;
+    display: flex;
+    padding: 0;
+    margin: 1em 0;
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 10px;
+
+    .article {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      p {
+        padding: 0 1rem;
+        font-size: 0.8rem;
+        color: $darktext;
+      }
+      h2 {
+        padding: 0 1rem;
+      }
+    }
+
+    .votes {
+      padding: 1.5em;
+      background-color: #f8f9fa;
+      border-radius: 10px;
+    }
+
+    .article-details {
+      display: flex;
+      justify-content: space-between;
+      color: $darktext;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .author {
+    display: none;
+  }
+}
