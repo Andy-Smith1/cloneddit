@@ -1,0 +1,38 @@
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: white;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.3em 1em;
+}
+
+nav #logo {
+  width: 200px;
+}
+
+@media only screen and (max-width: 400px) {
+  nav #logo {
+    width: 150px;
+  }
+}
+
+nav .login-btn {
+  font-size: 1.25rem;
+  padding: 5px 1em;
+  border-radius: 20px;
+  color: #009c76;
+  background-color: white;
+  border: 1px solid #009c76;
+}
+
+nav .login-btn:hover {
+  background-color: #009c76;
+  color: white;
+}
+/*# sourceMappingURL=Nav.css.map */
