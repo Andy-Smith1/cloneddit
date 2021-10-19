@@ -1,25 +1,58 @@
 import React from "react";
-import "../Styles/Articles.css";
+import "../Styles/Articles.scss";
 import { useState, useEffect } from "react";
 import { getArticles } from "../utils/api";
 import { formatDate } from "../utils/format";
+import ArticleFilter from "./ArticleFilter";
+import { useParams } from "react-router";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
   const [page, setPage] = useState(1);
   const [maxArticles, setMaxArticles] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { topic } = useParams();
 
   useEffect(() => {
-    getArticles(page).then((articlesFromApi) => {
-      setArticles((currentArticles) => {
-        setMaxArticles(articlesFromApi.total_articles);
-        return [...currentArticles, ...articlesFromApi.articles];
+    if (page > 1) {
+      setIsLoading(true);
+      getArticles({ topic, page }).then((articlesFromApi) => {
+        setArticles((curr) => {
+          return [...curr, ...articlesFromApi.articles];
+        });
+        setIsLoading(false);
       });
-    });
+    }
   }, [page]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    setPage(1);
+    getArticles({ topic }).then((articlesFromApi) => {
+      console.log(articlesFromApi);
+      setArticles(() => {
+        return [...articlesFromApi.articles];
+      });
+      setMaxArticles(articlesFromApi.total_articles);
+      setIsLoading(false);
+    });
+  }, [topic]);
+
+  //   useEffect(() => {
+  //     setIsLoading(true);
+  //     getArticles(page, topic).then((articlesFromApi) => {
+  //       setArticles((currentArticles) => {
+  //         setMaxArticles(articlesFromApi.total_articles);
+  //         return [...currentArticles, ...articlesFromApi.articles];
+  //       });
+  //       setIsLoading(false);
+  //     });
+  //   }, [page, topic]);
 
   return (
     <section className="Articles">
+      <ArticleFilter />
       <ul className="article-list">
         {articles.map((article) => {
           return (
@@ -45,8 +78,11 @@ const Articles = () => {
         })}
       </ul>
       {articles.length < maxArticles && (
-        <button onClick={() => setPage(page + 1)}>See More</button>
+        <button onClick={() => setPage(page + 1)} className="see-more">
+          See More
+        </button>
       )}
+      {isLoading && <p className="loading">Loading...</p>}
     </section>
   );
 };
