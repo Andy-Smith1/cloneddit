@@ -24,3 +24,12 @@ export const getSingleArticle = async (article_id) => {
   const { data } = await news.get(`/articles/${article_id}`);
   return data;
 };
+
+export const getArticleComments = async ({ article_id, page }) => {
+  const { data } = await news.get(`articles/${article_id}/comments`, {
+    params: {
+      p: page,
+    },
+  });
+  return data.comments;
+};
