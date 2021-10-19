@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Nav from "./Components/Nav";
 import Articles from "./Components/Articles";
-import "./Styles/App.css";
+import "./Styles/App.scss";
 
 function App() {
   return (
@@ -10,6 +10,9 @@ function App() {
       <section className="container">
         <Switch>
           <Route exact path="/">
+            <Articles />
+          </Route>
+          <Route exact path="/articles/:topic">
             <Articles />
           </Route>
         </Switch>
