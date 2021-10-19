@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { FaHotjar } from "react-icons/fa";
 import { MdNewReleases } from "react-icons/md";
-import { BsFillArrowUpCircleFill } from "react-icons/bs";
 import { getTopics } from "../utils/api";
 import { Link } from "react-router-dom";
 
-const ArticleFilter = () => {
+const ArticleFilter = ({ setSortBy }) => {
   const [topics, setTopics] = useState([]);
 
   useEffect(() => {
@@ -17,9 +16,12 @@ const ArticleFilter = () => {
   return (
     <>
       <div className="filter">
-        <FaHotjar />
-        <MdNewReleases />
-        <BsFillArrowUpCircleFill />
+        <button onClick={() => setSortBy("comment_count")}>
+          <FaHotjar /> TOP
+        </button>
+        <button onClick={() => setSortBy("created_at")}>
+          <MdNewReleases /> NEW
+        </button>
       </div>
       <div className="topics">
         <Link to="/">All</Link>

@@ -11,13 +11,14 @@ const Articles = () => {
   const [page, setPage] = useState(1);
   const [maxArticles, setMaxArticles] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [sortBy, setSortBy] = useState("comment_count");
 
   const { topic } = useParams();
 
   useEffect(() => {
     if (page > 1) {
       setIsLoading(true);
-      getArticles({ topic, page }).then((articlesFromApi) => {
+      getArticles({ topic, page, sortBy }).then((articlesFromApi) => {
         setArticles((curr) => {
           return [...curr, ...articlesFromApi.articles];
         });
@@ -29,7 +30,7 @@ const Articles = () => {
   useEffect(() => {
     setIsLoading(true);
     setPage(1);
-    getArticles({ topic }).then((articlesFromApi) => {
+    getArticles({ topic, sortBy }).then((articlesFromApi) => {
       console.log(articlesFromApi);
       setArticles(() => {
         return [...articlesFromApi.articles];
@@ -37,22 +38,11 @@ const Articles = () => {
       setMaxArticles(articlesFromApi.total_articles);
       setIsLoading(false);
     });
-  }, [topic]);
-
-  //   useEffect(() => {
-  //     setIsLoading(true);
-  //     getArticles(page, topic).then((articlesFromApi) => {
-  //       setArticles((currentArticles) => {
-  //         setMaxArticles(articlesFromApi.total_articles);
-  //         return [...currentArticles, ...articlesFromApi.articles];
-  //       });
-  //       setIsLoading(false);
-  //     });
-  //   }, [page, topic]);
+  }, [topic, sortBy]);
 
   return (
     <section className="Articles">
-      <ArticleFilter />
+      <ArticleFilter setSortBy={setSortBy} />
       <ul className="article-list">
         {articles.map((article) => {
           return (
