@@ -5,6 +5,7 @@ import { getArticles } from "../utils/api";
 import { formatDate } from "../utils/format";
 import ArticleFilter from "./ArticleFilter";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
@@ -60,7 +61,9 @@ const Articles = () => {
                     <p>{formatDate(article.created_at)}</p>
                   )}
                 </div>
-                <h2>{article.title}</h2>
+                <Link to={`/article/${article.article_id}`}>
+                  <h2>{article.title}</h2>
+                </Link>
                 <p>{article.comment_count} comments</p>
               </div>
             </li>
