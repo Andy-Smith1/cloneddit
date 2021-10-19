@@ -1,0 +1,89 @@
+@import "./variables/variables.scss";
+
+.SingleArticle {
+  background-color: white;
+  display: flex;
+  padding: 0;
+  margin: 1em 0;
+  border: 1px solid rgb(189, 189, 189);
+  border-radius: 10px;
+  .article {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    p {
+      padding: 0 1rem;
+      font-size: 0.8rem;
+      color: $darktext;
+    }
+    h2 {
+      padding: 0 1rem;
+      font-size: 2rem;
+    }
+    a {
+      color: black;
+      text-decoration: none;
+    }
+    .article-body {
+      color: black;
+      font-size: 1.25rem;
+    }
+  }
+
+  .votes {
+    padding: 1.5em;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+  }
+
+  .article-details {
+    display: flex;
+    justify-content: space-between;
+    color: $darktext;
+    flex-wrap: wrap;
+  }
+}
+
+.CommentsList {
+  border: 1px solid rgb(189, 189, 189);
+  border-radius: 10px;
+  background: white;
+  padding: 2rem;
+
+  h2 {
+    margin: 0;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    border-bottom: 1px solid rgb(189, 189, 189);
+    .comment-info {
+      display: flex;
+      justify-content: space-between;
+      color: $darktext;
+    }
+    .comment-body {
+      margin-top: 0;
+    }
+  }
+  button {
+    display: flex;
+    margin: auto;
+    background: none;
+    border: none;
+    color: $darktext;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+}
+
+.loading {
+  text-align: center;
+  color: $darktext;
+  font-size: 2rem;
+}
