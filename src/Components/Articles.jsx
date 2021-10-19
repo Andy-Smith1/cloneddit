@@ -26,13 +26,13 @@ const Articles = () => {
         setIsLoading(false);
       });
     }
+    //eslint-disable-next-line
   }, [page]);
 
   useEffect(() => {
     setIsLoading(true);
     setPage(1);
     getArticles({ topic, sortBy }).then((articlesFromApi) => {
-      console.log(articlesFromApi);
       setArticles(() => {
         return [...articlesFromApi.articles];
       });
