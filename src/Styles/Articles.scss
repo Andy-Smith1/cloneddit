@@ -38,12 +38,23 @@
       display: flex;
       justify-content: space-between;
       color: $darktext;
+      flex-wrap: wrap;
     }
   }
 }
 
-@media screen and (max-width: 400px) {
-  .author {
-    display: none;
-  }
+.see-more {
+  display: flex;
+  margin: auto;
+  background-color: $background;
+  border: none;
+  color: $darktext;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.loading {
+  text-align: center;
+  color: $darktext;
+  font-size: 2rem;
 }
