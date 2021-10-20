@@ -1,12 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { getArticleComments } from "../utils/api";
 import { useParams } from "react-router";
 import { formatDate } from "../utils/format";
+import { UserContext } from "../contexts/UserContext";
+import CommentAdd from "./CommentAdd";
 
 const CommentsList = () => {
   const [comments, setComments] = useState([]);
   const [page, setPage] = useState(1);
   const [isMoreComments, setIsMoreComments] = useState(true);
+  const { userLogin } = useContext(UserContext);
+
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -20,6 +24,7 @@ const CommentsList = () => {
 
   return (
     <section className="CommentsList">
+      {userLogin.loggedIn && <CommentAdd setComments={setComments} />}
       <h2>Comments</h2>
       <ul>
         {comments.map((comment) => {
@@ -35,7 +40,9 @@ const CommentsList = () => {
         })}
       </ul>
       {isMoreComments && (
-        <button onClick={() => setPage(page + 1)}>Load More</button>
+        <button className="more-comments" onClick={() => setPage(page + 1)}>
+          Load More
+        </button>
       )}
     </section>
   );

@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { changeAvatar } from "../../utils/api";
 import "../../Styles/UserProfile.scss";
+import { Link } from "react-router-dom";
 
 const UserProfile = () => {
   const { userLogin, setUserLogin } = useContext(UserContext);
@@ -24,6 +25,9 @@ const UserProfile = () => {
 
   return (
     <>
+      <Link to="/" className="home">
+        Go Home
+      </Link>
       <section className="profile-card">
         <img src={userLogin.user.avatar_url} alt="avatar" />
         <div>

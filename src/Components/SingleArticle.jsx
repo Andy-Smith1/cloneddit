@@ -7,8 +7,8 @@ import CommentsList from "./CommentsList";
 
 const SingleArticle = () => {
   const [article, setArticle] = useState({});
-
   const [isLoading, setIsLoading] = useState(true);
+
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -40,6 +40,7 @@ const SingleArticle = () => {
           <p>{article.comment_count} comments</p>
         </div>
       </section>
+
       <CommentsList />
     </>
   );
