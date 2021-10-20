@@ -33,3 +33,8 @@ export const getArticleComments = async ({ article_id, page }) => {
   });
   return data.comments;
 };
+
+export const getUser = async (username) => {
+  const { data } = await news.get(`users/${username}`);
+  return data.user;
+};
