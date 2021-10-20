@@ -4,7 +4,7 @@
   background: white;
   max-width: 500px;
   margin: 2em auto;
-  padding: 1em;
+  padding: 1em 1em 2em 1em;
   display: flex;
   flex-direction: column;
   border: 1px solid rgb(189, 189, 189);
@@ -17,7 +17,7 @@
     flex-direction: column;
 
     input {
-      margin: 1.5em 0;
+      margin: 1em 0 1.5em 0;
       padding: 10px;
       border: 1px solid rgb(189, 189, 189);
       border-radius: 5px;
@@ -32,6 +32,7 @@
       border-radius: 15px;
       color: white;
       font-weight: 700;
+      cursor: pointer;
     }
     .not-found {
       color: red;
