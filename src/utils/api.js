@@ -48,3 +48,11 @@ export const changeAvatar = async (username, avatar_url) => {
   const { data } = await news.patch(`users/${username}`, { avatar_url });
   return data.user;
 };
+
+export const addNewComment = async (article_id, body, username) => {
+  const { data } = await news.post(`articles/${article_id}/comments`, {
+    body,
+    username,
+  });
+  return data.comment;
+};
