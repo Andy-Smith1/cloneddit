@@ -1,0 +1,58 @@
+@import "./variables/variables.scss";
+
+.profile-card {
+  background: white;
+  border: 1px solid rgb(189, 189, 189);
+  border-radius: 5px;
+  margin: 2em 0;
+  padding: 2em;
+  text-align: center;
+
+  img {
+    width: 80%;
+    max-width: 400px;
+    margin: auto;
+    justify-content: center;
+  }
+  h2 {
+    color: $green;
+  }
+  form {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+
+    input {
+      margin: 1em 0 1.5em 0;
+      padding: 10px;
+      border: 1px solid rgb(189, 189, 189);
+      border-radius: 5px;
+      max-width: 250px;
+      margin: 1em auto;
+      outline: none;
+    }
+    button {
+      width: 100px;
+      margin: auto;
+      padding: 5px 0;
+      background-color: $green;
+      border: 0;
+      border-radius: 15px;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  }
+}
+
+.logout-btn {
+  margin-top: 2.5em;
+  width: 100px;
+  margin-top: 3em;
+  padding: 5px 0;
+  background-color: $green;
+  border: 0;
+  border-radius: 15px;
+  color: white;
+  font-weight: 700;
+}
