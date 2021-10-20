@@ -1,0 +1,45 @@
+@import "./variables/variables.scss";
+
+.UserLogin {
+  background: white;
+  max-width: 500px;
+  margin: 2em auto;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(189, 189, 189);
+  border-radius: 10px;
+  text-align: center;
+
+  form {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+
+    input {
+      margin: 1.5em 0;
+      padding: 10px;
+      border: 1px solid rgb(189, 189, 189);
+      border-radius: 5px;
+      outline: none;
+    }
+    button {
+      width: 100px;
+      margin: auto;
+      padding: 5px 0;
+      background-color: $green;
+      border: 0;
+      border-radius: 15px;
+      color: white;
+      font-weight: 700;
+    }
+  }
+
+  h2 {
+    margin: auto;
+    padding: 1em;
+  }
+  h3 {
+    padding: 3em 0;
+  }
+}
