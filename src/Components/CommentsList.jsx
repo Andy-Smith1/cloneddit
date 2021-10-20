@@ -26,7 +26,7 @@ const CommentsList = () => {
           return (
             <li key={comment.comment_id}>
               <div className="comment-info">
-                <p>{comment.author}</p>
+                <p>u/{comment.author}</p>
                 <p>{formatDate(comment.created_at)}</p>
               </div>
               <p className="comment-body">{comment.body}</p>

@@ -32,7 +32,7 @@ const SingleArticle = () => {
         <div className="article">
           <div className="article-details">
             <p>c/{article.topic}</p>
-            <p className="author">{article.author}</p>
+            <p className="author">u/{article.author}</p>
             {article.created_at && <p>{formatDate(article.created_at)}</p>}
           </div>
           <h2>{article.title}</h2>
