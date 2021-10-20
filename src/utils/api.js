@@ -41,5 +41,5 @@ export const getUser = async (username) => {
 
 export const createNewUser = async (username, name, avatar_url) => {
   const { data } = await news.post(`/users`, { username, name, avatar_url });
-  return data;
+  return data.user;
 };
