@@ -15,7 +15,9 @@ const NewUser = () => {
     setInvalidName(false);
     createNewUser(newUsernameInput, newNameInput, avatarUrlInput)
       .then((userFromApi) => {
-        console.log(userFromApi);
+        setUserLogin(() => {
+          return { loggedIn: true, user: userFromApi };
+        });
       })
       .catch((err) => {
         console.dir(err);

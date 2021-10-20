@@ -1,7 +1,7 @@
 import React from "react";
 
 const UserProfile = () => {
-  return <div></div>;
+  return <div>In Profile Component</div>;
 };
 
 export default UserProfile;
