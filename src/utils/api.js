@@ -43,3 +43,8 @@ export const createNewUser = async (username, name, avatar_url) => {
   const { data } = await news.post(`/users`, { username, name, avatar_url });
   return data.user;
 };
+
+export const changeAvatar = async (username, avatar_url) => {
+  const { data } = await news.patch(`users/${username}`, { avatar_url });
+  return data.user;
+};
