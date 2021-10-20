@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { getUser } from "../../utils/api";
 import "../../Styles/UserLogin.scss";
+import NewUser from "./NewUser";
 
 const UserLogin = () => {
   const [usernameInput, setUsernameInput] = useState("");
@@ -44,20 +45,10 @@ const UserLogin = () => {
         />
 
         <button>GO</button>
-        {userNotFound && <p className="not-found">User not found</p>}
+        {userNotFound && <p className="not-found">User not found!</p>}
       </form>
       <h3>OR</h3>
-      {/* <h2>Create User</h2>
-      <form>
-        <label htmlFor="new-user">
-          Username:
-          <input type="text" id="new-user" />
-        </label>
-        <label htmlFor="avatar-url">
-          Avatar URL
-          <input type="text" id="avatar-url" />
-        </label>
-      </form> */}
+      <NewUser />
     </section>
   );
 };
