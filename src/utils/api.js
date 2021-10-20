@@ -38,3 +38,8 @@ export const getUser = async (username) => {
   const { data } = await news.get(`users/${username}`);
   return data.user;
 };
+
+export const createNewUser = async (username, name, avatar_url) => {
+  const { data } = await news.post(`/users`, { username, name, avatar_url });
+  return data;
+};
