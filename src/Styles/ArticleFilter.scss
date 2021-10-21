@@ -28,8 +28,11 @@
     background: none;
     border: none;
     cursor: pointer;
+    color: $darktext;
+    font-weight: 700;
   }
   svg {
+    color: $darktext;
     font-size: 1.5rem;
     padding: 5px;
   }
