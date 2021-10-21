@@ -18,9 +18,7 @@ const Vote = ({ votes, articleId }) => {
         // setNewVotes(votesFromApi);
       })
       .catch((err) => {
-        setNewVotes((currVotes) =>
-          num === 1 ? currVotes - 1 : currVotes + +1
-        );
+        setNewVotes((currVotes) => (num === 1 ? currVotes - 1 : currVotes + 1));
         setIsError(true);
       });
   };

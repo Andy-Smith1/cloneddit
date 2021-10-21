@@ -4,6 +4,7 @@ import { getSingleArticle } from "../utils/api";
 import { formatDate } from "../utils/format";
 import "../Styles/SingleArticle.scss";
 import CommentsList from "./CommentsList";
+import Vote from "./Vote";
 
 const SingleArticle = () => {
   const [article, setArticle] = useState({});
@@ -24,11 +25,7 @@ const SingleArticle = () => {
   return (
     <>
       <section className="SingleArticle">
-        <div className="votes">
-          <p>+</p>
-          {article.votes}
-          <p>-</p>
-        </div>
+        <Vote votes={article.votes} articleId={article_id} />
         <div className="article">
           <div className="article-details">
             <p>c/{article.topic}</p>
