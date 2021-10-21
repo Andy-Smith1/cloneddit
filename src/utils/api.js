@@ -56,3 +56,10 @@ export const addNewComment = async (article_id, body, username) => {
   });
   return data.comment;
 };
+
+export const changeVotes = async (article_id, num) => {
+  const { data } = await news.patch(`articles/${article_id}`, {
+    inc_votes: num,
+  });
+  return data.article.votes;
+};
