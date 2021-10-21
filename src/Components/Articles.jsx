@@ -6,6 +6,7 @@ import { formatDate } from "../utils/format";
 import ArticleFilter from "./ArticleFilter";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import Vote from "./Vote";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
@@ -48,11 +49,8 @@ const Articles = () => {
         {articles.map((article) => {
           return (
             <li key={article.article_id}>
-              <div className="votes">
-                <p>+</p>
-                {article.votes}
-                <p>-</p>
-              </div>
+              <Vote votes={article.votes} articleId={article.article_id} />
+
               <div className="article">
                 <div className="article-details">
                   <p>c/{article.topic}</p>
