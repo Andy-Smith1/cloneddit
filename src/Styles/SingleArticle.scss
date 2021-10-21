@@ -87,3 +87,30 @@
   color: $darktext;
   font-size: 2rem;
 }
+
+.CommentAdd {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2em;
+  padding-bottom: 2em;
+  border-bottom: 1px solid rgb(189, 189, 189);
+  input {
+    width: 60%;
+    padding: 0.5em;
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 5px;
+    font-size: 1.25rem;
+    outline: none;
+  }
+  button {
+    width: 75px;
+    padding: 5px 0;
+    background-color: $green;
+    border: 0;
+    border-radius: 15px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.25em;
+    margin-left: 1rem;
+  }
+}
