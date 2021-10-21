@@ -6,12 +6,14 @@ import { changeVotes } from "../utils/api";
 import "../Styles/Vote.scss";
 
 const Vote = ({ votes, articleId }) => {
-  const [newVotes, setNewVotes] = useState(votes);
+  const [newVotes, setNewVotes] = useState(0);
   const [isError, setIsError] = useState(false);
   const { userLogin } = useContext(UserContext);
 
   const handleVoteChange = (num) => {
     setIsError(false);
+    if (num === -1 && newVotes < 0) return;
+    if (num === 1 && newVotes > 0) return;
     setNewVotes((currVotes) => currVotes + num);
     changeVotes(articleId, num)
       .then((votesFromApi) => {
@@ -30,7 +32,7 @@ const Vote = ({ votes, articleId }) => {
           <ImArrowUp />
         </button>
       )}
-      <p>{newVotes}</p>
+      <p>{votes + newVotes}</p>
       <p>votes</p>
       {userLogin.loggedIn && (
         <button className="downvote" onClick={() => handleVoteChange(-1)}>

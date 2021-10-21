@@ -34,7 +34,9 @@ const SingleArticle = () => {
           </div>
           <h2>{article.title}</h2>
           <p className="article-body">{article.body}</p>
-          <p>{article.comment_count} comments</p>
+          <div>
+            <p>{article.comment_count} comments</p>
+          </div>
         </div>
       </section>
 

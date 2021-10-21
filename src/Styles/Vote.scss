@@ -22,4 +22,16 @@
     color: rgb(255, 0, 0);
     font-size: 0.75rem;
   }
+  .upvote:hover {
+    color: $green;
+  }
+  .downvote:hover {
+    color: red;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .votes {
+    flex-direction: row;
+  }
 }
