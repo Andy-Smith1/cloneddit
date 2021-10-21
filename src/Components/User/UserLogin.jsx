@@ -16,11 +16,10 @@ const UserLogin = () => {
     getUser(usernameInput)
       .then((userFromApi) => {
         setUsernameInput("");
-        setUserLogin(() => {
-          return { loggedIn: true, user: userFromApi };
-        });
+        setUserLogin(userFromApi);
       })
       .catch((err) => {
+        console.dir(err);
         if (err.response.status === 404) {
           setUsernameInput("");
           setUserNotFound(true);

@@ -5,7 +5,7 @@ import UserProfile from "./UserProfile";
 
 const UserPage = () => {
   const { userLogin } = useContext(UserContext);
-  return <>{!userLogin.loggedIn ? <UserLogin /> : <UserProfile />}</>;
+  return <>{!userLogin ? <UserLogin /> : <UserProfile />}</>;
 };
 
 export default UserPage;

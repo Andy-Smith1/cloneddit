@@ -13,7 +13,7 @@ const CommentAdd = ({ setComments }) => {
   const handleNewComment = (e) => {
     e.preventDefault();
     setIsError(false);
-    addNewComment(article_id, commentInput, userLogin.user.username)
+    addNewComment(article_id, commentInput, userLogin.username)
       .then((commentFromApi) => {
         setComments((currComments) => {
           const commentsCopy = [...currComments];

@@ -8,10 +8,7 @@ import { UserContext } from "./contexts/UserContext";
 import UserPage from "./Components/User/UserPage";
 
 function App() {
-  const [userLogin, setUserLogin] = useState({
-    loggedIn: false,
-    user: {},
-  });
+  const [userLogin, setUserLogin] = useState(null);
   return (
     <UserContext.Provider value={{ userLogin, setUserLogin }}>
       <BrowserRouter>

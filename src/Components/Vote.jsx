@@ -27,14 +27,14 @@ const Vote = ({ votes, articleId }) => {
 
   return (
     <div className="votes">
-      {userLogin.loggedIn && (
+      {userLogin && (
         <button className="upvote" onClick={() => handleVoteChange(1)}>
           <ImArrowUp />
         </button>
       )}
       <p>{votes + newVotes}</p>
       <p>votes</p>
-      {userLogin.loggedIn && (
+      {userLogin && (
         <button className="downvote" onClick={() => handleVoteChange(-1)}>
           <ImArrowDown />
         </button>

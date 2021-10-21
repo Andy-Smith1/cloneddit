@@ -27,7 +27,7 @@ const CommentsList = () => {
 
   return (
     <section className="CommentsList">
-      {userLogin.loggedIn && <CommentAdd setComments={setComments} />}
+      {userLogin && <CommentAdd setComments={setComments} />}
       <h2>Comments</h2>
       <ul>
         {comments.map((comment) => {

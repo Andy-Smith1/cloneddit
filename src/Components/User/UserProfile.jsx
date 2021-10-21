@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 
 const UserProfile = () => {
   const { userLogin, setUserLogin } = useContext(UserContext);
-  const [newAvatarUrl, setNewAvatarUrl] = useState(userLogin.user.avatar_url);
+  const [newAvatarUrl, setNewAvatarUrl] = useState(userLogin.avatar_url);
 
   const handleAvatarChange = (e) => {
     e.preventDefault();
-    changeAvatar(userLogin.user.username, newAvatarUrl).then((userFromApi) => {
+    changeAvatar(userLogin.username, newAvatarUrl).then((userFromApi) => {
       setUserLogin(() => {
         return { loggedIn: true, user: userFromApi };
       });
@@ -18,9 +18,7 @@ const UserProfile = () => {
   };
 
   const handleLogOut = () => {
-    setUserLogin(() => {
-      return { loggedIn: false, user: {} };
-    });
+    setUserLogin(null);
   };
 
   return (
@@ -29,10 +27,10 @@ const UserProfile = () => {
         Go Home
       </Link>
       <section className="profile-card">
-        <img src={userLogin.user.avatar_url} alt="avatar" />
+        <img src={userLogin.avatar_url} alt="avatar" />
         <div>
-          <h2>{userLogin.user.username}</h2>
-          <h4>{userLogin.user.name}</h4>
+          <h2>{userLogin.username}</h2>
+          <h4>{userLogin.name}</h4>
           <form onSubmit={handleAvatarChange}>
             <label htmlFor="avatar-url">Avatar URL</label>
             <input

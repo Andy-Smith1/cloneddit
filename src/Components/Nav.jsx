@@ -16,7 +16,7 @@ const Nav = () => {
       <div>
         <Link to="/user">
           <button className="login-btn">
-            {userLogin.loggedIn ? userLogin.user.username : "Log In"}
+            {userLogin ? userLogin.username : "Log In"}
           </button>
         </Link>
       </div>
