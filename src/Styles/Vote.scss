@@ -1,0 +1,25 @@
+@import "./variables/variables.scss";
+
+.votes {
+  padding: 1.5em;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  button {
+    background: none;
+    border: none;
+    margin: 1em 0;
+    color: $darktext;
+  }
+  p {
+    margin: 0;
+  }
+  .error {
+    color: rgb(255, 0, 0);
+    font-size: 0.75rem;
+  }
+}
