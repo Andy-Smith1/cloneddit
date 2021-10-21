@@ -31,12 +31,6 @@
     }
   }
 
-  .votes {
-    padding: 1.5em;
-    background-color: #f8f9fa;
-    border-radius: 10px;
-  }
-
   .article-details {
     display: flex;
     justify-content: space-between;
@@ -112,5 +106,8 @@
     font-weight: 700;
     font-size: 1.25em;
     margin-left: 1rem;
+  }
+  h3 {
+    text-align: center;
   }
 }

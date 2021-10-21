@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { getSingleArticle } from "../utils/api";
 import { formatDate } from "../utils/format";
 import "../Styles/SingleArticle.scss";
+import "../Styles/Vote.scss";
 import CommentsList from "./CommentsList";
 import Vote from "./Vote";
 

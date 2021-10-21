@@ -13,7 +13,7 @@ const Articles = () => {
   const [page, setPage] = useState(1);
   const [maxArticles, setMaxArticles] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [sortBy, setSortBy] = useState("comment_count");
+  const [sortBy, setSortBy] = useState("votes");
 
   const { topic } = useParams();
 

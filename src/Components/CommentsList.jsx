@@ -10,35 +10,24 @@ const CommentsList = () => {
   const [page, setPage] = useState(1);
   const [isMoreComments, setIsMoreComments] = useState(true);
   const { userLogin } = useContext(UserContext);
-  const [newlyAddedComment, setNewlyAddedComment] = useState({});
 
   const { article_id } = useParams();
 
   useEffect(() => {
     getArticleComments({ article_id, page }).then((commentsFromApi) => {
-      setComments((currComments) => {
-        if (commentsFromApi.length === 0) setIsMoreComments(false);
-        if (newlyAddedComment) {
-          const removedNewComment = commentsFromApi.filter(
-            (comment) => comment.comment_id !== newlyAddedComment.comment_id
-          );
-          return [...currComments, ...removedNewComment];
-        } else {
+      if (commentsFromApi.length === 0) setIsMoreComments(false);
+      else {
+        setComments((currComments) => {
           return [...currComments, ...commentsFromApi];
-        }
-      });
+        });
+      }
     });
     //eslint-disable-next-line
   }, [article_id, page]);
 
   return (
     <section className="CommentsList">
-      {userLogin.loggedIn && (
-        <CommentAdd
-          setComments={setComments}
-          setNewlyAddedComment={setNewlyAddedComment}
-        />
-      )}
+      {userLogin.loggedIn && <CommentAdd setComments={setComments} />}
       <h2>Comments</h2>
       <ul>
         {comments.map((comment) => {
