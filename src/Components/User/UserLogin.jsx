@@ -7,26 +7,29 @@ import NewUser from "./NewUser";
 
 const UserLogin = () => {
   const [usernameInput, setUsernameInput] = useState("");
-  const [userNotFound, setUserNotFound] = useState(false);
+  const [errorString, setErrorString] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const { setUserLogin } = useContext(UserContext);
 
   const handleLogIn = (e) => {
     e.preventDefault();
-    setUserNotFound(false);
+    setErrorString("");
+    setIsLoading(true);
     getUser(usernameInput)
       .then((userFromApi) => {
         setUsernameInput("");
         setUserLogin(userFromApi);
+        setIsLoading(false);
       })
       .catch((err) => {
-        console.dir(err);
+        setUsernameInput("");
+        setErrorString("Something went wrong!");
         if (err.response.status === 404) {
-          setUsernameInput("");
-          setUserNotFound(true);
+          setErrorString("User not found");
         }
       });
   };
-
+  console.log(errorString);
   return (
     <section className="UserLogin">
       <h2>Log In</h2>
@@ -44,7 +47,8 @@ const UserLogin = () => {
         />
 
         <button>GO</button>
-        {userNotFound && <p className="not-found">User not found!</p>}
+        {errorString !== "" && <p className="not-found">{errorString}</p>}
+        {isLoading && <p>Loading...</p>}
       </form>
       <h3>OR</h3>
       <NewUser />

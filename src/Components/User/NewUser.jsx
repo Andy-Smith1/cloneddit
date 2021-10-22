@@ -2,25 +2,30 @@ import React, { useState, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import "../../Styles/UserLogin.scss";
 import { createNewUser } from "../../utils/api";
+import { regex } from "../../utils/format";
 
 const NewUser = () => {
   const [newUsernameInput, setNewUsernameInput] = useState("");
   const [newNameInput, setNewNameInput] = useState("");
   const [avatarUrlInput, setAvatarUrlInput] = useState("");
-  const [invalidName, setInvalidName] = useState(false);
+  const [errorString, setErrorString] = useState("");
   const { setUserLogin } = useContext(UserContext);
 
   const handleCreateUser = (e) => {
     e.preventDefault();
-    setInvalidName(false);
+    if (!regex.test(avatarUrlInput)) {
+      setErrorString("Please enter a valid URL");
+      return;
+    }
+    setErrorString("");
     createNewUser(newUsernameInput, newNameInput, avatarUrlInput)
       .then((userFromApi) => {
         setUserLogin(userFromApi);
       })
       .catch((err) => {
-        console.dir(err);
+        setErrorString("Something went wrong!");
         if (err.response.status === 400) {
-          setInvalidName(true);
+          setErrorString("Invalid name or username");
         }
       });
   };
@@ -57,7 +62,7 @@ const NewUser = () => {
           required
         />
         <button>GO</button>
-        {invalidName && <p className="not-found">Invalid name or username</p>}
+        {errorString !== "" && <p className="not-found">{errorString}</p>}
       </form>
     </>
   );
