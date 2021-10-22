@@ -19,11 +19,18 @@ const UserProfile = () => {
       return;
     }
     setIsLoading(true);
-    changeAvatar(userLogin.username, newAvatarUrl).then((userFromApi) => {
-      setUserLogin(userFromApi);
-      setIsLoading(false);
-    });
+    changeAvatar(userLogin.username, newAvatarUrl)
+      .then((userFromApi) => {
+        setUserLogin(userFromApi);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setIsLoading(false);
+        setErrorString("Something went wrong!");
+      });
   };
+
+  console.log(isLoading);
 
   const handleLogOut = () => {
     setUserLogin(null);
@@ -52,7 +59,7 @@ const UserProfile = () => {
             />
             <button>Change</button>
           </form>
-          {errorString !== "" && <p>{errorString}</p>}
+          {errorString !== "" && <p className="error">{errorString}</p>}
           <button className="logout-btn" onClick={handleLogOut}>
             Log Out
           </button>
