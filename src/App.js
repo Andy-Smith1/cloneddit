@@ -6,6 +6,7 @@ import "./Styles/App.scss";
 import { useState } from "react";
 import { UserContext } from "./contexts/UserContext";
 import UserPage from "./Components/User/UserPage";
+import NotFound from "./Components/NotFound";
 
 function App() {
   const [userLogin, setUserLogin] = useState(null);
@@ -27,8 +28,8 @@ function App() {
             <Route exact path="/user">
               <UserPage />
             </Route>
-            <Route path="/">
-              <h1>Page not found</h1>
+            <Route>
+              <NotFound />
             </Route>
           </Switch>
         </section>

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { getArticles } from "../utils/api";
 import { formatDate } from "../utils/format";
 import ArticleFilter from "./ArticleFilter";
+import NotFound from "./NotFound";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import Vote from "./Vote";
@@ -13,6 +14,7 @@ const Articles = () => {
   const [page, setPage] = useState(1);
   const [maxArticles, setMaxArticles] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [invalidSlug, setInvalidSlug] = useState(false);
   const [sortBy, setSortBy] = useState("votes");
 
   const { topic } = useParams();
@@ -31,17 +33,25 @@ const Articles = () => {
   }, [page]);
 
   useEffect(() => {
+    setInvalidSlug(false);
     setIsLoading(true);
     setPage(1);
-    getArticles({ topic, sortBy }).then((articlesFromApi) => {
-      setArticles(() => {
-        return [...articlesFromApi.articles];
+    getArticles({ topic, sortBy })
+      .then((articlesFromApi) => {
+        setArticles(() => {
+          return [...articlesFromApi.articles];
+        });
+        setMaxArticles(articlesFromApi.total_articles);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        if (err.response.status === 404) {
+          setInvalidSlug(true);
+        }
       });
-      setMaxArticles(articlesFromApi.total_articles);
-      setIsLoading(false);
-    });
   }, [topic, sortBy]);
 
+  if (invalidSlug) return <NotFound />;
   return (
     <section className="Articles">
       <ArticleFilter setSortBy={setSortBy} />
