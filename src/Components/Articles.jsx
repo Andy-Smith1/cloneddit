@@ -54,7 +54,7 @@ const Articles = () => {
   if (invalidSlug) return <NotFound />;
   return (
     <section className="Articles">
-      <ArticleFilter setSortBy={setSortBy} />
+      <ArticleFilter setSortBy={setSortBy} sortBy={sortBy} />
       <ul className="article-list">
         {articles.map((article) => {
           return (

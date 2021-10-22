@@ -31,6 +31,20 @@
     color: $darktext;
     font-weight: 700;
   }
+  .selectedOrder {
+    display: flex;
+    flex-direction: row;
+    font-size: 1rem;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $green;
+    font-weight: 700;
+    svg {
+      color: $green;
+    }
+  }
   svg {
     color: $darktext;
     font-size: 1.5rem;

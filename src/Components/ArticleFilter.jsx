@@ -5,7 +5,7 @@ import { getTopics } from "../utils/api";
 import { Link } from "react-router-dom";
 import "../Styles/ArticleFilter.scss";
 
-const ArticleFilter = ({ setSortBy }) => {
+const ArticleFilter = ({ setSortBy, sortBy }) => {
   const [topics, setTopics] = useState([]);
 
   useEffect(() => {
@@ -33,10 +33,16 @@ const ArticleFilter = ({ setSortBy }) => {
         })}
       </div>
       <div className="filter">
-        <button className="sort " onClick={() => setSortBy("votes")}>
+        <button
+          className={sortBy === "votes" ? "selectedOrder" : "sort"}
+          onClick={() => setSortBy("votes")}
+        >
           <FaHotjar /> TOP
         </button>
-        <button className="sort" onClick={() => setSortBy("created_at")}>
+        <button
+          className={sortBy === "created_at" ? "selectedOrder" : "sort"}
+          onClick={() => setSortBy("created_at")}
+        >
           <MdNewReleases /> NEW
         </button>
       </div>
