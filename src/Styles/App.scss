@@ -17,3 +17,9 @@ body {
 button {
   cursor: pointer;
 }
+
+.loading {
+  text-align: center;
+  color: $darktext;
+  font-size: 2rem;
+}

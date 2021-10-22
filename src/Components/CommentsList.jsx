@@ -10,19 +10,29 @@ const CommentsList = () => {
   const [page, setPage] = useState(1);
   const [isMoreComments, setIsMoreComments] = useState(true);
   const [cantDelete, setCantDelete] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+
   const { userLogin } = useContext(UserContext);
 
   const { article_id } = useParams();
 
   useEffect(() => {
-    getArticleComments({ article_id, page }).then((commentsFromApi) => {
-      if (commentsFromApi.length === 0) setIsMoreComments(false);
-      else {
-        setComments((currComments) => {
-          return [...currComments, ...commentsFromApi];
-        });
-      }
-    });
+    setIsError(false);
+    setIsLoading(true);
+    getArticleComments({ article_id, page })
+      .then((commentsFromApi) => {
+        setIsLoading(false);
+        if (commentsFromApi.length === 0) setIsMoreComments(false);
+        else {
+          setComments((currComments) => {
+            return [...currComments, ...commentsFromApi];
+          });
+        }
+      })
+      .catch((err) => {
+        setIsError(true);
+      });
     //eslint-disable-next-line
   }, [article_id, page]);
 
@@ -41,6 +51,7 @@ const CommentsList = () => {
         setCantDelete(true);
       });
   };
+  if (isError) return <h2 className="error">Something went wrong.</h2>;
 
   return (
     <section className="CommentsList">
@@ -71,9 +82,10 @@ const CommentsList = () => {
       </ul>
       {isMoreComments && (
         <button className="more-comments" onClick={() => setPage(page + 1)}>
-          Load More
+          {isLoading ? "Loading..." : "Load More"}
         </button>
       )}
+      {/* {isLoading && <h2 className="loading">Loading...</h2>} */}
     </section>
   );
 };
