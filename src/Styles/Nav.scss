@@ -20,11 +20,11 @@ nav {
     font-size: 1.25rem;
     padding: 5px 1em;
     border-radius: 20px;
-    color: $green;
+    color: $main;
     background-color: white;
-    border: 1px solid $green;
+    border: 1px solid $main;
     &:hover {
-      background-color: $green;
+      background-color: $main;
       color: white;
     }
   }

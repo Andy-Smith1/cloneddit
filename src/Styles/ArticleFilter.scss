@@ -11,7 +11,7 @@
     font-size: 1.5rem;
     margin: 0.5em 0;
     font-weight: bold;
-    background: $green;
+    background: $main;
     padding: 5px 1.5rem;
     border-radius: 20px;
     text-transform: capitalize;
@@ -39,10 +39,10 @@
     background: none;
     border: none;
     cursor: pointer;
-    color: $green;
+    color: $main;
     font-weight: 700;
     svg {
-      color: $green;
+      color: $main;
     }
   }
   svg {
