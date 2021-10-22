@@ -18,8 +18,8 @@ const UserLogin = () => {
     getUser(usernameInput)
       .then((userFromApi) => {
         setUsernameInput("");
-        setUserLogin(userFromApi);
         setIsLoading(false);
+        setUserLogin(userFromApi);
       })
       .catch((err) => {
         setUsernameInput("");
@@ -29,7 +29,7 @@ const UserLogin = () => {
         }
       });
   };
-  console.log(errorString);
+
   return (
     <section className="UserLogin">
       <h2>Log In</h2>

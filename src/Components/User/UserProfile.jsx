@@ -30,8 +30,6 @@ const UserProfile = () => {
       });
   };
 
-  console.log(isLoading);
-
   const handleLogOut = () => {
     setUserLogin(null);
   };
