@@ -63,3 +63,8 @@ export const changeVotes = async (article_id, num) => {
   });
   return data.article.votes;
 };
+
+export const deleteComment = async (comment_id) => {
+  const { data } = await news.delete(`comments/${comment_id}`);
+  return data;
+};
