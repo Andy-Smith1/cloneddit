@@ -33,10 +33,10 @@ const ArticleFilter = ({ setSortBy }) => {
         })}
       </div>
       <div className="filter">
-        <button onClick={() => setSortBy("votes")}>
+        <button className="sort " onClick={() => setSortBy("votes")}>
           <FaHotjar /> TOP
         </button>
-        <button onClick={() => setSortBy("created_at")}>
+        <button className="sort" onClick={() => setSortBy("created_at")}>
           <MdNewReleases /> NEW
         </button>
       </div>
