@@ -2,6 +2,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Nav from "./Components/Nav";
 import Articles from "./Components/Articles";
 import SingleArticle from "./Components/SingleArticle";
+import NewArticle from "./Components/NewArticle";
 import "./Styles/App.scss";
 import { useState } from "react";
 import { UserContext } from "./contexts/UserContext";
@@ -27,6 +28,9 @@ function App() {
             </Route>
             <Route exact path="/user">
               <UserPage />
+            </Route>
+            <Route exact path="/new-article">
+              <NewArticle />
             </Route>
             <Route>
               <NotFound />

@@ -68,3 +68,22 @@ export const deleteComment = async (comment_id) => {
   const { data } = await news.delete(`comments/${comment_id}`);
   return data;
 };
+
+export const addNewArticle = async (
+  username,
+  selectedTopic,
+  newArticleTitle,
+  newArticleBody
+) => {
+  const { data } = await news.post("/articles", {
+    author: username,
+    title: newArticleTitle,
+    body: newArticleBody,
+    topic: selectedTopic,
+  });
+  return data.article;
+};
+
+export const deleteArticle = async (id) => {
+  await news.delete(`articles/${id}`);
+};
