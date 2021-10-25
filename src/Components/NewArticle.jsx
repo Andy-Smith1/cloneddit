@@ -1,13 +1,16 @@
 import { useContext, useState, useEffect } from "react";
-import { addNewArticle, deleteArticle, getTopics } from "../utils/api";
+import { addNewArticle, getTopics } from "../utils/api";
 import { UserContext } from "../contexts/UserContext";
 import { useHistory } from "react-router-dom";
+import NotFound from "./NotFound";
 
 const NewArticle = () => {
   const [topics, setTopics] = useState([]);
   const [selectedTopic, setSelectedTopic] = useState("coding");
   const [newArticleTitle, setNewArticleTitle] = useState("");
   const [newArticleBody, setNewArticleBody] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const { userLogin } = useContext(UserContext);
   const history = useHistory();
 
@@ -19,17 +22,26 @@ const NewArticle = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsError(false);
+    setIsLoading(true);
     addNewArticle(
       userLogin.username,
       selectedTopic,
       newArticleTitle,
       newArticleBody
-    ).then((newArticle) => {
-      const url = `/article/${newArticle.article_id}`;
-      history.push(url);
-    });
+    )
+      .then((newArticle) => {
+        const url = `/article/${newArticle.article_id}`;
+        setIsLoading(false);
+        history.push(url);
+      })
+      .catch(() => {
+        setIsLoading(false);
+        setIsError(true);
+      });
   };
 
+  if (!userLogin) return <NotFound />;
   return (
     <section>
       <h1>Create a New Article</h1>
@@ -62,15 +74,9 @@ const NewArticle = () => {
           required
         />
         <button>Post</button>
+        {isLoading && <p className="loading">Loading...</p>}
+        {isError && <p className="error">Something went wrong, try again.</p>}
       </form>
-      {/* 
-      <button
-        onClick={() => {
-          deleteArticle(38);
-        }}
-      >
-        Delete
-      </button> */}
     </section>
   );
 };
