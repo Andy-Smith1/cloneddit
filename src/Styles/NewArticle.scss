@@ -1,51 +1,51 @@
 @import "./variables/variables.scss";
 
-.UserLogin {
-  background: white;
-  max-width: 500px;
+.NewArticle {
+  background-color: white;
+  padding: 1rem;
   margin: 2em auto;
-  padding: 1em 1em 2em 1em;
-  display: flex;
-  flex-direction: column;
   border: 1px solid rgb(189, 189, 189);
   border-radius: 10px;
-  text-align: center;
-
+  h1 {
+    text-align: center;
+  }
   form {
-    margin: auto;
     display: flex;
     flex-direction: column;
+    max-width: 350px;
+    margin: auto;
+    padding: 1em;
 
-    input {
-      margin: 1em 0 1.5em 0;
+    input,
+    textarea,
+    button,
+    select {
+      margin: 1rem 0;
       padding: 10px;
       border: 1px solid rgb(189, 189, 189);
       border-radius: 5px;
+      font-family: IBM Plex Sans;
       outline: none;
     }
+
+    select {
+      text-transform: capitalize;
+    }
     button {
-      width: 100px;
-      margin: auto;
+      width: 75px;
       padding: 5px 0;
       background-color: $main;
       border: 0;
       border-radius: 15px;
       color: white;
       font-weight: 700;
-      cursor: pointer;
+      font-size: 1.25em;
+      margin: 1rem auto;
       box-shadow: $shadow;
     }
-    .not-found {
-      color: red;
-      font-size: 0.8rem;
+    textarea {
+      resize: none;
+      height: 200px;
     }
-  }
-
-  h2 {
-    margin: auto;
-    padding: 1em;
-  }
-  h3 {
-    padding: 2em 0;
   }
 }

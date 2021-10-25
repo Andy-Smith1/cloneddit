@@ -3,6 +3,7 @@ import { addNewArticle, getTopics } from "../utils/api";
 import { UserContext } from "../contexts/UserContext";
 import { useHistory } from "react-router-dom";
 import NotFound from "./NotFound";
+import "../Styles/NewArticle.scss";
 
 const NewArticle = () => {
   const [topics, setTopics] = useState([]);
@@ -43,7 +44,7 @@ const NewArticle = () => {
 
   if (!userLogin) return <NotFound />;
   return (
-    <section>
+    <section className="NewArticle">
       <h1>Create a New Article</h1>
       <form onSubmit={handleSubmit}>
         <select
@@ -65,6 +66,7 @@ const NewArticle = () => {
           placeholder="Add a title"
           value={newArticleTitle}
           onChange={(e) => setNewArticleTitle(e.target.value)}
+          autoComplete="off"
           required
         />
         <textarea
